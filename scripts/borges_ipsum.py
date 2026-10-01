@@ -103,8 +103,18 @@ def ink_mask(gray, stroke, contrast, theme):
     return np.where(local < 128, light_ink > contrast, dark_ink > contrast)
 
 
+def pitch(m, h):
+    """How well the letters of a run sit on one fixed-pitch lattice: near 1
+    for monospace, lower for proportional type. None if too few letters."""
+    lefts = np.array(sorted(s[1].start for s in ndi.find_objects(ndi.label(m)[0])))
+    lefts = lefts[np.r_[True, np.diff(lefts) > 1]]  # an i and its dot are one letter
+    if len(lefts) < 8:
+        return None  # a few letters can sit on a lattice by chance
+    return max(abs(np.exp(2j * np.pi * lefts / p).mean()) for p in np.arange(0.45 * h, 0.75 * h, 0.1))
+
+
 def find_runs(mask, rgb, gray, word_gap, max_height, H):
-    """Word-sized runs of ink: (x0, y0, x1, y1, ly0, ly1, fg, ink), plus the specks skipped."""
+    """Word-sized runs of ink: (x0, y0, x1, y1, ly0, ly1, fg, ink, pitch), plus the specks skipped."""
     lines_lbl, _ = ndi.label(ndi.binary_dilation(mask, structure=np.ones((1, word_gap * 2 + 5))))
     words_lbl, _ = ndi.label(ndi.binary_dilation(mask, structure=np.ones((1, word_gap))))
     line_sl = ndi.find_objects(lines_lbl)
@@ -148,7 +158,7 @@ def find_runs(mask, rgb, gray, word_gap, max_height, H):
         dist = np.abs(pix - np.median(pix, axis=0)).sum(axis=1)
         fg = tuple(int(c) for c in pix[dist >= np.percentile(dist, 92)].mean(axis=0))
         ink = m.sum() / max(1, m.any(axis=0).sum() * h)
-        runs.append((x0, y0, x1, y1, ly0, ly1, fg, ink))
+        runs.append((x0, y0, x1, y1, ly0, ly1, fg, ink, pitch(m, ly1 - ly0)))
     return runs, specks
 
 
@@ -173,8 +183,9 @@ def main(argv=None):
                     metavar="X0,Y0,X1,Y1", help="replace text only inside these boxes (repeatable)")
     ap.add_argument("--theme", choices=["auto", "dark", "light"], default="auto",
                     help="text lighter than background (dark), darker (light), or decide locally")
-    ap.add_argument("--font", default="sans",
-                    help="mono, sans, serif, or a path to a .ttf/.otf (default: sans)")
+    ap.add_argument("--font", default="auto",
+                    help="auto, mono, sans, serif, or a path to a .ttf/.otf (default auto: mono where "
+                         "letters sit on a fixed pitch, otherwise sans)")
     ap.add_argument("--stroke", type=int,
                     help="filter size; must exceed stroke width (default 9, scaled up for 2x screenshots)")
     ap.add_argument("--contrast", type=int, default=20, help="ink threshold in grey levels (default 20)")
@@ -287,15 +298,15 @@ def main(argv=None):
         print(f"0 text runs found; wrote an unchanged copy to {args.dst}", file=sys.stderr)
         return 0
 
-    typical_ink = np.median([r[-1] for r in runs])
+    typical_ink = np.median([r[7] for r in runs])
     body = int(body)
     fonts = {}
 
-    def font(size, bold):
-        if (size, bold) not in fonts:
-            path = find_font(args.font, bold) or find_font(args.font, False)
-            fonts[size, bold] = ImageFont.truetype(path, size) if path else ImageFont.load_default(size)
-        return fonts[size, bold]
+    def font(kind, size, bold):
+        if (kind, size, bold) not in fonts:
+            path = find_font(kind, bold) or find_font(kind, False)
+            fonts[kind, size, bold] = ImageFont.truetype(path, size) if path else ImageFont.load_default(size)
+        return fonts[kind, size, bold]
 
     def fill(f, width):
         """Borges words, greedily packed into `width` px."""
@@ -311,10 +322,28 @@ def main(argv=None):
             words.append(w)
         return " ".join(words) or min(SMALL, key=len)
 
-    for x0, y0, x1, y1, ly0, ly1, fg, ink in runs:
+    # --font auto: text whose letters sit on a fixed pitch is monospace. One
+    # run is too few letters to judge, so the runs of its block vote: its own
+    # line, and runs in the same column within a few lines of it.
+    # A screen that is mostly monospace (a terminal, most agent UIs) is set
+    # in mono throughout, since touching letters hide the pitch in places.
+    judged = [r for r in runs if r[8] is not None]
+    all_mono = bool(judged) and np.mean([q[8] > 0.7 for q in judged]) > 0.6
+
+    def mono(r):
+        if all_mono:
+            return True
+        h = r[5] - r[4]
+        near = [q[8] for q in judged if abs(q[4] - r[4]) <= 4 * h
+                and (q[4:6] == r[4:6] or q[0] < r[2] and r[0] < q[2])]
+        return bool(near) and np.median(near) > 0.7
+
+    for r in runs:
+        x0, y0, x1, y1, ly0, ly1, fg, ink, _ = r
         size = ly1 - ly0
         size = body if 0.85 * body <= size <= 1.2 * body else max(9, size)
-        f = font(size, ink > 1.45 * typical_ink)
+        kind = args.font if args.font != "auto" else "mono" if mono(r) else "sans"
+        f = font(kind, size, ink > 1.45 * typical_ink)
         top_off = f.getbbox("T")[1]
         draw.text((x0, ly0 - top_off), fill(f, x1 - x0), font=f, fill=fg)
 
