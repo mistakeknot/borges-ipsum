@@ -21,6 +21,12 @@ FONTS = {
     "sans": "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
     "sans-bold": "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
     "serif": "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf",
+    # held-out fixtures use other families, so a pass is not fitted to DejaVu
+    "lato": "/usr/share/fonts/truetype/lato/Lato-Regular.ttf",
+    "lato-bold": "/usr/share/fonts/truetype/lato/Lato-Bold.ttf",
+    "lib-mono": "/usr/share/fonts/truetype/liberation/LiberationMono-Regular.ttf",
+    "lib-serif": "/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf",
+    "lib-sans": "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
 }
 
 PII = """Priya Raman priya.raman@northwind-labs.io deploy-bot ghp_8fK2xQ7mLw prod-db-03
@@ -244,7 +250,64 @@ def chrome():
            "and Sent. Replace anything that could identify a person, company or project.")
 
 
-BUILDS = [dark_chat, light_doc, mixed_panes, colorful, retina, faint_bold, media, chrome]
+# Held out: never used while tuning the script or the skill. The eval glob
+# [!z]* skips them; run them once per candidate to check it generalises.
+
+def zz_holdout_terminal():
+    # Small, tightly set terminal text with a coloured prompt and a status bar.
+    c = Canvas("zz-holdout-terminal", 1200, 700, (12, 14, 12))
+    y = 16
+    for _ in range(22):
+        x = c.text(14, y, "kpatel@runner-7:~$", "lib-mono", 13, (120, 220, 120))
+        line = " ".join(c.rng.sample(PII, 6))
+        c.text(x + 8, y, line, "lib-mono", 13, (200, 200, 200))
+        y += 26
+    c.d.rectangle([0, 670, 1200, 700], fill=(40, 110, 60))
+    c.text(10, 676, "[0] ledger-core 2:zsh", "lib-mono", 13, (230, 255, 230))
+    c.save("Borges-ipsum this terminal screenshot before I paste it in a public issue.")
+
+
+def zz_holdout_chat():
+    # A light team-chat layout: coloured names, timestamps, avatars and reaction pills.
+    c = Canvas("zz-holdout-chat", 1300, 860, (255, 255, 255))
+    c.d.rectangle([0, 0, 240, 860], fill=(63, 14, 64))
+    c.text(20, 20, "Globex", "lato-bold", 22, (255, 255, 255))
+    y = 80
+    for _ in range(10):
+        c.text(28, y, "# " + c.rng.choice(PII)[:16], "lato", 17, (205, 190, 205))
+        y += 34
+    y = 40
+    for i in range(6):
+        c.obj("rounded", (270, y, 310, y + 40), radius=6, fill=[(220, 120, 60), (60, 140, 200), (90, 170, 90)][i % 3])
+        x = c.text(325, y - 2, " ".join(c.rng.sample(PII, 2)), "lato-bold", 17, (29, 28, 29))
+        c.text(x + 6, y + 1, "10:4%d AM" % i, "lato", 13, (120, 120, 120))
+        y = c.para(325, y + 24, 920, 2, "lato", 17, (29, 28, 29))
+        c.obj("rounded", (325, y, 375, y + 24), radius=12, outline=(29, 155, 209), width=1, fill=(232, 245, 250))
+        y += 44
+    c.save("Replace all the text in this chat screenshot with Borges ipsum.")
+
+
+def zz_holdout_table():
+    # A spreadsheet: every cell sits inside grid lines that must survive.
+    c = Canvas("zz-holdout-table", 1300, 760, (255, 255, 255))
+    cols = [40, 300, 560, 820, 1060, 1260]
+    for i, h in enumerate(("Name", "Email", "Team", "Salary", "Notes")):
+        c.text(cols[i] + 10, 48, h, "lib-sans", 16, (60, 60, 60), "keep")
+    for r in range(15):
+        y = 80 + r * 42
+        for i in range(5):
+            s = c.rng.choice(PII) if i != 3 else "%d,%03d" % (c.rng.randrange(40, 190), c.rng.randrange(1000))
+            c.text(cols[i] + 10, y + 11, s[:22], "lib-serif", 17, (20, 20, 20))
+    for x in cols:  # PIL boxes are inclusive: these lines are 2 px, the scored box 1 px
+        c.obj("rect", (x, 40, x + 1, 712), fill=(200, 200, 200))
+    for r in range(17):
+        y = 40 if r == 0 else 40 + r * 42
+        c.obj("rect", (40, y, 1261, y + 1), fill=(200, 200, 200))
+    c.save("Anonymize this spreadsheet with Borges ipsum. The column headers are generic and can stay.")
+
+
+BUILDS = [dark_chat, light_doc, mixed_panes, colorful, retina, faint_bold, media, chrome,
+          zz_holdout_terminal, zz_holdout_chat, zz_holdout_table]
 
 if __name__ == "__main__":
     for build in BUILDS:

@@ -127,7 +127,10 @@ def find_runs(mask, rgb, gray, word_gap, max_height, H):
         m = mask[ws]
         if not m.any():
             continue
-        if (h < 9 and not (h >= 4 and w >= 40)) or w < 10 or m.sum() < 15:
+        # A short word of x-height letters ("on", "was") is as low as a comma
+        # but wider than tall and made of several letters.
+        xheight_word = h >= 5 and w >= 1.8 * h and ndi.label(m)[1] >= 2
+        if (h < 9 and not (h >= 4 and w >= 40) and not xheight_word) or w < 10 or m.sum() < 15:
             if h <= max_height:
                 specks.append((x0, y0, x1, y1))  # commas, dots, hyphens: erase, don't redraw
             continue
@@ -137,6 +140,8 @@ def find_runs(mask, rgb, gray, word_gap, max_height, H):
             continue  # a rule line, not a short line of text
         cols = np.nonzero(m.any(axis=0))[0]
         extent = cols[-1] - cols[0] + 1
+        if h >= 12 and not m[int(0.3 * h):int(0.7 * h) + 1, int(0.15 * w):int(0.85 * w) + 1].any():
+            continue  # an empty outlined chip or field: ink round the edge, none in the middle
         if ndi.label(m)[1] <= 1:
             # One blob is an icon, a spinner or a curve, unless it is joined-up
             # text (an underlined link, a connected script), whose strokes cross
@@ -165,8 +170,11 @@ def find_runs(mask, rgb, gray, word_gap, max_height, H):
 def clean_mask(mask, max_height):
     """Lift out panel borders, dividers and box outlines so text inside a box
     does not fuse with the box into one tall shape."""
-    mask = mask & ~ndi.binary_opening(mask, structure=np.ones((1, 4 * max_height)))
-    return mask & ~ndi.binary_opening(mask, structure=np.ones((max(9, int(0.75 * max_height)), 1)))
+    # Both from the same mask: lifting rows first would cut a table's columns
+    # into cell-high stubs too short to read as lines.
+    rows = ndi.binary_opening(mask, structure=np.ones((1, 4 * max_height)))
+    cols = ndi.binary_opening(mask, structure=np.ones((max(9, int(0.75 * max_height)), 1)))
+    return mask & ~rows & ~cols
 
 
 def overlaps(a, b, pad=0):
