@@ -1,0 +1,1041 @@
+{
+ "image": "colorful.png",
+ "task": "Swap every bit of text for Borges ipsum.",
+ "size": [
+  1300,
+  700
+ ],
+ "words": [
+  {
+   "box": [
+    40,
+    29,
+    252,
+    56
+   ],
+   "text": "Northwind",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    264,
+    29,
+    359,
+    56
+   ],
+   "text": "Labs",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    371,
+    31,
+    499,
+    56
+   ],
+   "text": "status",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    40,
+    135,
+    125,
+    153
+   ],
+   "text": "branch",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    133,
+    141,
+    164,
+    153
+   ],
+   "text": "on",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    170,
+    135,
+    301,
+    153
+   ],
+   "text": "10.14.2.71",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    308,
+    135,
+    392,
+    156
+   ],
+   "text": "48,000",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    399,
+    135,
+    484,
+    158
+   ],
+   "text": "ending",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    490,
+    135,
+    530,
+    153
+   ],
+   "text": "the",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    537,
+    135,
+    923,
+    158
+   ],
+   "text": "/home/jsmith/work/acme-billing",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    930,
+    137,
+    955,
+    153
+   ],
+   "text": "to",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    962,
+    135,
+    1034,
+    153
+   ],
+   "text": "Hollis",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1040,
+    135,
+    1175,
+    158
+   ],
+   "text": "prod-db-03",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1182,
+    135,
+    1218,
+    153
+   ],
+   "text": "for",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    40,
+    172,
+    108,
+    190
+   ],
+   "text": "token",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    115,
+    172,
+    235,
+    195
+   ],
+   "text": "migration",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    242,
+    172,
+    335,
+    190
+   ],
+   "text": "Marisol",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    342,
+    172,
+    728,
+    195
+   ],
+   "text": "/home/jsmith/work/acme-billing",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    735,
+    174,
+    760,
+    190
+   ],
+   "text": "to",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    767,
+    172,
+    835,
+    190
+   ],
+   "text": "letter",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    841,
+    172,
+    949,
+    190
+   ],
+   "text": "runner-7",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    955,
+    172,
+    1016,
+    190
+   ],
+   "text": "main",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1023,
+    178,
+    1095,
+    195
+   ],
+   "text": "pager",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1102,
+    172,
+    1187,
+    190
+   ],
+   "text": "Okafor",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1193,
+    172,
+    1229,
+    194
+   ],
+   "text": "Q3",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    40,
+    209,
+    93,
+    227
+   ],
+   "text": "SSN",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    101,
+    209,
+    137,
+    231
+   ],
+   "text": "Q3",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    143,
+    209,
+    202,
+    227
+   ],
+   "text": "offer",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    208,
+    209,
+    324,
+    227
+   ],
+   "text": "escalated",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    330,
+    209,
+    417,
+    227
+   ],
+   "text": "vendor",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    423,
+    209,
+    492,
+    227
+   ],
+   "text": "token",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    499,
+    209,
+    553,
+    227
+   ],
+   "text": "SSN",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    560,
+    209,
+    720,
+    233
+   ],
+   "text": "sk_live_51Hx",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    727,
+    209,
+    767,
+    227
+   ],
+   "text": "the",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    774,
+    209,
+    828,
+    227
+   ],
+   "text": "SSN",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    835,
+    209,
+    910,
+    232
+   ],
+   "text": "salary",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    916,
+    209,
+    984,
+    227
+   ],
+   "text": "letter",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    989,
+    209,
+    1050,
+    232
+   ],
+   "text": "Vega",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1057,
+    209,
+    1144,
+    227
+   ],
+   "text": "invoice",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    40,
+    246,
+    107,
+    264
+   ],
+   "text": "letter",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    114,
+    246,
+    162,
+    264
+   ],
+   "text": "into",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    169,
+    246,
+    217,
+    264
+   ],
+   "text": "into",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    224,
+    246,
+    610,
+    269
+   ],
+   "text": "priya.raman@northwind-labs.io",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    617,
+    246,
+    647,
+    269
+   ],
+   "text": "by",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    650,
+    246,
+    735,
+    269
+   ],
+   "text": "Jordan",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    741,
+    246,
+    789,
+    264
+   ],
+   "text": "into",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    796,
+    246,
+    911,
+    269
+   ],
+   "text": "Thursday",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    918,
+    246,
+    1002,
+    264
+   ],
+   "text": "dollars",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1009,
+    246,
+    1071,
+    264
+   ],
+   "text": "4417",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1077,
+    252,
+    1108,
+    264
+   ],
+   "text": "on",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1115,
+    246,
+    1199,
+    264
+   ],
+   "text": "dollars",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1206,
+    246,
+    1260,
+    264
+   ],
+   "text": "SSN",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    70,
+    327,
+    104,
+    343
+   ],
+   "text": "the",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    111,
+    327,
+    205,
+    343
+   ],
+   "text": "Whitfield",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    211,
+    327,
+    305,
+    343
+   ],
+   "text": "Whitfield",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    311,
+    328,
+    342,
+    346
+   ],
+   "text": "Q3",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    347,
+    327,
+    405,
+    343
+   ],
+   "text": "Hollis",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    411,
+    327,
+    461,
+    343
+   ],
+   "text": "offer",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    467,
+    328,
+    510,
+    343
+   ],
+   "text": "SSN",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    516,
+    327,
+    568,
+    347
+   ],
+   "text": "legal",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    573,
+    327,
+    644,
+    343
+   ],
+   "text": "dollars",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    650,
+    328,
+    725,
+    343
+   ],
+   "text": "Raman",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    730,
+    327,
+    808,
+    343
+   ],
+   "text": "finance",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    814,
+    328,
+    868,
+    343
+   ],
+   "text": "1287",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    874,
+    327,
+    1207,
+    347
+   ],
+   "text": "/home/jsmith/work/acme-billing",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    70,
+    360,
+    100,
+    378
+   ],
+   "text": "Q3",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    106,
+    359,
+    172,
+    379
+   ],
+   "text": "kpatel",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    178,
+    359,
+    237,
+    375
+   ],
+   "text": "ticket",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    243,
+    360,
+    271,
+    375
+   ],
+   "text": "PR",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    277,
+    359,
+    353,
+    375
+   ],
+   "text": "invoice",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    358,
+    359,
+    408,
+    375
+   ],
+   "text": "offer",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    414,
+    360,
+    468,
+    375
+   ],
+   "text": "4417",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    474,
+    359,
+    552,
+    375
+   ],
+   "text": "finance",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    558,
+    361,
+    658,
+    375
+   ],
+   "text": "customer",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    663,
+    359,
+    854,
+    380
+   ],
+   "text": "ghp_8fK2xQ7mLw",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    860,
+    361,
+    922,
+    379
+   ],
+   "text": "quote",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    927,
+    359,
+    1006,
+    379
+   ],
+   "text": "staging",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1012,
+    359,
+    1088,
+    375
+   ],
+   "text": "invoice",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1093,
+    359,
+    1143,
+    375
+   ],
+   "text": "offer",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1149,
+    359,
+    1179,
+    375
+   ],
+   "text": "for",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    70,
+    391,
+    225,
+    409
+   ],
+   "text": "fix/refund-race",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    231,
+    391,
+    303,
+    407
+   ],
+   "text": "Initech",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    309,
+    391,
+    542,
+    411
+   ],
+   "text": "northwind/ledger-core",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    547,
+    391,
+    780,
+    411
+   ],
+   "text": "northwind/ledger-core",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    786,
+    391,
+    977,
+    412
+   ],
+   "text": "ghp_8fK2xQ7mLw",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    982,
+    392,
+    1073,
+    407
+   ],
+   "text": "runner-7",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1079,
+    391,
+    1144,
+    411
+   ],
+   "text": "salary",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1149,
+    392,
+    1223,
+    409
+   ],
+   "text": "48,000",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    70,
+    423,
+    171,
+    443
+   ],
+   "text": "migration",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    178,
+    423,
+    257,
+    443
+   ],
+   "text": "staging",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    262,
+    424,
+    316,
+    439
+   ],
+   "text": "9921",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    322,
+    423,
+    410,
+    443
+   ],
+   "text": "meeting",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    416,
+    423,
+    491,
+    439
+   ],
+   "text": "vendor",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    496,
+    424,
+    601,
+    439
+   ],
+   "text": "OPS-7731",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    606,
+    423,
+    668,
+    439
+   ],
+   "text": "about",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    673,
+    423,
+    731,
+    439
+   ],
+   "text": "Hollis",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    737,
+    423,
+    815,
+    439
+   ],
+   "text": "finance",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    821,
+    423,
+    895,
+    439
+   ],
+   "text": "branch",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    901,
+    423,
+    973,
+    439
+   ],
+   "text": "Initech",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    979,
+    423,
+    1056,
+    443
+   ],
+   "text": "expires",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1062,
+    423,
+    1124,
+    439
+   ],
+   "text": "about",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1129,
+    423,
+    1205,
+    439
+   ],
+   "text": "invoice",
+   "expect": "redact"
+  }
+ ],
+ "objects": [
+  {
+   "box": [
+    1180,
+    600,
+    1240,
+    660
+   ],
+   "kind": "ellipse"
+  }
+ ]
+}

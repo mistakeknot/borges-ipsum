@@ -1,0 +1,1837 @@
+{
+ "image": "light-doc.png",
+ "task": "Anonymize every piece of text in this screenshot with Borges ipsum.",
+ "size": [
+  1400,
+  1000
+ ],
+ "words": [
+  {
+   "box": [
+    80,
+    58,
+    296,
+    100
+   ],
+   "text": "Quarterly",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    309,
+    58,
+    492,
+    91
+   ],
+   "text": "incident",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    504,
+    58,
+    655,
+    91
+   ],
+   "text": "review",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    80,
+    144,
+    130,
+    161
+   ],
+   "text": "auth",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    136,
+    149,
+    180,
+    161
+   ],
+   "text": "was",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    186,
+    144,
+    305,
+    166
+   ],
+   "text": "deploy-bot",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    311,
+    144,
+    359,
+    161
+   ],
+   "text": "with",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    365,
+    146,
+    388,
+    161
+   ],
+   "text": "to",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    394,
+    144,
+    463,
+    166
+   ],
+   "text": "kpatel",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    469,
+    144,
+    544,
+    161
+   ],
+   "text": "dollars",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    550,
+    145,
+    609,
+    161
+   ],
+   "text": "Dana",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    615,
+    145,
+    704,
+    161
+   ],
+   "text": "#48213",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    710,
+    144,
+    784,
+    161
+   ],
+   "text": "on-call",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    790,
+    144,
+    827,
+    161
+   ],
+   "text": "the",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    833,
+    145,
+    922,
+    161
+   ],
+   "text": "#48213",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    929,
+    145,
+    986,
+    161
+   ],
+   "text": "9921",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    992,
+    149,
+    1020,
+    161
+   ],
+   "text": "on",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1026,
+    145,
+    1115,
+    161
+   ],
+   "text": "#48213",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1122,
+    145,
+    1154,
+    164
+   ],
+   "text": "Q3",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1160,
+    145,
+    1215,
+    166
+   ],
+   "text": "Vega",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1221,
+    144,
+    1249,
+    166
+   ],
+   "text": "by",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    80,
+    178,
+    132,
+    195
+   ],
+   "text": "offer",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    138,
+    178,
+    194,
+    200
+   ],
+   "text": "Priya",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    199,
+    178,
+    285,
+    200
+   ],
+   "text": "merged",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    291,
+    178,
+    352,
+    195
+   ],
+   "text": "letter",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    358,
+    179,
+    413,
+    200
+   ],
+   "text": "Vega",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    419,
+    178,
+    493,
+    195
+   ],
+   "text": "review",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    499,
+    178,
+    699,
+    200
+   ],
+   "text": "ghp_8fK2xQ7mLw",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    705,
+    178,
+    780,
+    195
+   ],
+   "text": "Okafor",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    784,
+    178,
+    888,
+    200
+   ],
+   "text": "Thursday",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    895,
+    178,
+    957,
+    195
+   ],
+   "text": "ticket",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    961,
+    178,
+    1034,
+    199
+   ],
+   "text": "Jordan",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1040,
+    178,
+    1119,
+    195
+   ],
+   "text": "invoice",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1125,
+    178,
+    1244,
+    200
+   ],
+   "text": "deploy-bot",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1249,
+    178,
+    1286,
+    195
+   ],
+   "text": "the",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    80,
+    212,
+    116,
+    229
+   ],
+   "text": "the",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    123,
+    212,
+    160,
+    229
+   ],
+   "text": "the",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    166,
+    217,
+    232,
+    234
+   ],
+   "text": "pager",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    237,
+    212,
+    311,
+    229
+   ],
+   "text": "on-call",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    316,
+    212,
+    420,
+    234
+   ],
+   "text": "Thursday",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    426,
+    217,
+    470,
+    229
+   ],
+   "text": "was",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    476,
+    212,
+    539,
+    229
+   ],
+   "text": "token",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    543,
+    212,
+    616,
+    233
+   ],
+   "text": "Jordan",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    622,
+    213,
+    679,
+    229
+   ],
+   "text": "9921",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    685,
+    212,
+    765,
+    229
+   ],
+   "text": "Marisol",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    770,
+    213,
+    802,
+    232
+   ],
+   "text": "Q3",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    809,
+    214,
+    915,
+    229
+   ],
+   "text": "customer",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    919,
+    213,
+    949,
+    229
+   ],
+   "text": "PR",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    955,
+    212,
+    1155,
+    234
+   ],
+   "text": "ghp_8fK2xQ7mLw",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1161,
+    213,
+    1191,
+    229
+   ],
+   "text": "PR",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1196,
+    212,
+    1244,
+    229
+   ],
+   "text": "with",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    80,
+    246,
+    186,
+    268
+   ],
+   "text": "migration",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    193,
+    246,
+    300,
+    263
+   ],
+   "text": "escalated",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    306,
+    246,
+    382,
+    268
+   ],
+   "text": "payroll",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    388,
+    246,
+    467,
+    263
+   ],
+   "text": "invoice",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    473,
+    246,
+    536,
+    263
+   ],
+   "text": "token",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    541,
+    247,
+    636,
+    263
+   ],
+   "text": "runner-7",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    642,
+    246,
+    705,
+    263
+   ],
+   "text": "token",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    711,
+    246,
+    774,
+    263
+   ],
+   "text": "token",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    779,
+    246,
+    856,
+    263
+   ],
+   "text": "branch",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    863,
+    247,
+    927,
+    263
+   ],
+   "text": "Grant",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    932,
+    246,
+    1055,
+    268
+   ],
+   "text": "prod-db-03",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1061,
+    251,
+    1127,
+    268
+   ],
+   "text": "pager",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1132,
+    248,
+    1155,
+    263
+   ],
+   "text": "to",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    80,
+    280,
+    157,
+    297
+   ],
+   "text": "Globex",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    162,
+    280,
+    266,
+    302
+   ],
+   "text": "Thursday",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    273,
+    280,
+    436,
+    299
+   ],
+   "text": "fix/refund-race",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    442,
+    280,
+    519,
+    297
+   ],
+   "text": "branch",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    525,
+    280,
+    603,
+    297
+   ],
+   "text": "Globex",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    609,
+    280,
+    641,
+    297
+   ],
+   "text": "for",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    646,
+    280,
+    734,
+    297
+   ],
+   "text": "rollback",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    740,
+    280,
+    832,
+    302
+   ],
+   "text": "meeting",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    838,
+    280,
+    894,
+    302
+   ],
+   "text": "Priya",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    899,
+    280,
+    964,
+    297
+   ],
+   "text": "about",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    970,
+    280,
+    1033,
+    297
+   ],
+   "text": "token",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1038,
+    281,
+    1147,
+    297
+   ],
+   "text": "OPS-7731",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1154,
+    282,
+    1211,
+    297
+   ],
+   "text": "reset",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1216,
+    280,
+    1294,
+    297
+   ],
+   "text": "Globex",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    80,
+    354,
+    153,
+    371
+   ],
+   "text": "on-call",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    160,
+    355,
+    217,
+    371
+   ],
+   "text": "9921",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    223,
+    356,
+    280,
+    371
+   ],
+   "text": "reset",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    285,
+    355,
+    349,
+    371
+   ],
+   "text": "Grant",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    354,
+    354,
+    416,
+    371
+   ],
+   "text": "ticket",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    422,
+    354,
+    527,
+    376
+   ],
+   "text": "approved",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    533,
+    354,
+    611,
+    371
+   ],
+   "text": "Globex",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    617,
+    354,
+    966,
+    376
+   ],
+   "text": "/home/jsmith/work/acme-billing",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    972,
+    354,
+    1071,
+    371
+   ],
+   "text": "Whitfield",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1077,
+    354,
+    1240,
+    373
+   ],
+   "text": "fix/refund-race",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1246,
+    359,
+    1297,
+    376
+   ],
+   "text": "repo",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    80,
+    388,
+    156,
+    405
+   ],
+   "text": "branch",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    163,
+    388,
+    262,
+    405
+   ],
+   "text": "Whitfield",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    268,
+    389,
+    325,
+    405
+   ],
+   "text": "4417",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    331,
+    389,
+    440,
+    405
+   ],
+   "text": "OPS-7731",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    446,
+    388,
+    528,
+    405
+   ],
+   "text": "finance",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    534,
+    389,
+    598,
+    405
+   ],
+   "text": "Grant",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    603,
+    388,
+    656,
+    405
+   ],
+   "text": "offer",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    662,
+    388,
+    738,
+    405
+   ],
+   "text": "Initech",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    743,
+    388,
+    797,
+    410
+   ],
+   "text": "legal",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    803,
+    388,
+    840,
+    405
+   ],
+   "text": "the",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    847,
+    388,
+    954,
+    410
+   ],
+   "text": "migration",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    960,
+    388,
+    1039,
+    405
+   ],
+   "text": "vendor",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1044,
+    388,
+    1143,
+    405
+   ],
+   "text": "Whitfield",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1149,
+    388,
+    1248,
+    410
+   ],
+   "text": "roadmap",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1254,
+    388,
+    1315,
+    405
+   ],
+   "text": "Hollis",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    80,
+    422,
+    223,
+    444
+   ],
+   "text": "sk_live_51Hx",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    229,
+    422,
+    291,
+    439
+   ],
+   "text": "failed",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    297,
+    423,
+    354,
+    439
+   ],
+   "text": "9921",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    360,
+    423,
+    438,
+    439
+   ],
+   "text": "Raman",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    444,
+    422,
+    536,
+    444
+   ],
+   "text": "meeting",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    542,
+    422,
+    647,
+    444
+   ],
+   "text": "approved",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    653,
+    422,
+    729,
+    444
+   ],
+   "text": "ending",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    736,
+    422,
+    804,
+    444
+   ],
+   "text": "salary",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    809,
+    422,
+    1053,
+    444
+   ],
+   "text": "northwind/ledger-core",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1059,
+    422,
+    1133,
+    439
+   ],
+   "text": "review",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1137,
+    422,
+    1210,
+    443
+   ],
+   "text": "Jordan",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1216,
+    422,
+    1292,
+    444
+   ],
+   "text": "ending",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    100,
+    481,
+    140,
+    498
+   ],
+   "text": "ssh",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    153,
+    481,
+    378,
+    503
+   ],
+   "text": "deploy@prod-db-03",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    391,
+    481,
+    458,
+    503
+   ],
+   "text": "--key",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    471,
+    481,
+    617,
+    500
+   ],
+   "text": "~/.ssh/acme",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    115,
+    566,
+    162,
+    581
+   ],
+   "text": "offer",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    167,
+    566,
+    279,
+    585
+   ],
+   "text": "prod-db-03",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    283,
+    566,
+    378,
+    585
+   ],
+   "text": "Thursday",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    384,
+    566,
+    456,
+    581
+   ],
+   "text": "invoice",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    115,
+    606,
+    183,
+    625
+   ],
+   "text": "payroll",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    189,
+    606,
+    269,
+    621
+   ],
+   "text": "rollback",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    274,
+    607,
+    326,
+    621
+   ],
+   "text": "reset",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    331,
+    606,
+    357,
+    625
+   ],
+   "text": "by",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    115,
+    646,
+    186,
+    661
+   ],
+   "text": "vendor",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    191,
+    646,
+    262,
+    661
+   ],
+   "text": "Globex",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    267,
+    646,
+    489,
+    665
+   ],
+   "text": "northwind/ledger-core",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    494,
+    646,
+    557,
+    665
+   ],
+   "text": "kpatel",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    115,
+    686,
+    210,
+    705
+   ],
+   "text": "password",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    216,
+    686,
+    265,
+    705
+   ],
+   "text": "legal",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    271,
+    686,
+    327,
+    701
+   ],
+   "text": "letter",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    331,
+    686,
+    406,
+    705
+   ],
+   "text": "staging",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    80,
+    756,
+    123,
+    769
+   ],
+   "text": "quote",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    128,
+    755,
+    200,
+    769
+   ],
+   "text": "approved",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    203,
+    755,
+    370,
+    769
+   ],
+   "text": "northwind/ledger-core",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    373,
+    755,
+    416,
+    766
+   ],
+   "text": "failed",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    420,
+    755,
+    458,
+    769
+   ],
+   "text": "Priya",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    462,
+    755,
+    500,
+    769
+   ],
+   "text": "Vega",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    504,
+    755,
+    558,
+    766
+   ],
+   "text": "Raman",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    561,
+    755,
+    581,
+    766
+   ],
+   "text": "PR",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    585,
+    755,
+    632,
+    769
+   ],
+   "text": "salary",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    635,
+    755,
+    655,
+    766
+   ],
+   "text": "PR",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    660,
+    755,
+    758,
+    770
+   ],
+   "text": "sk_live_51Hx",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    762,
+    755,
+    804,
+    766
+   ],
+   "text": "token",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    808,
+    755,
+    850,
+    766
+   ],
+   "text": "Hollis",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    854,
+    755,
+    908,
+    766
+   ],
+   "text": "vendor",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    911,
+    755,
+    965,
+    766
+   ],
+   "text": "Raman",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    968,
+    755,
+    1022,
+    766
+   ],
+   "text": "Raman",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1026,
+    755,
+    1069,
+    766
+   ],
+   "text": "token",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1072,
+    755,
+    1110,
+    769
+   ],
+   "text": "Vega",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1114,
+    756,
+    1153,
+    766
+   ],
+   "text": "reset",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1157,
+    755,
+    1208,
+    766
+   ],
+   "text": "on-call",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1212,
+    755,
+    1264,
+    766
+   ],
+   "text": "Okafor",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    80,
+    778,
+    152,
+    792
+   ],
+   "text": "migration",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    157,
+    778,
+    200,
+    789
+   ],
+   "text": "Grant",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    204,
+    778,
+    258,
+    791
+   ],
+   "text": "48,000",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    261,
+    778,
+    300,
+    789
+   ],
+   "text": "4417",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    304,
+    778,
+    385,
+    792
+   ],
+   "text": "deploy-bot",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    389,
+    778,
+    457,
+    789
+   ],
+   "text": "Whitfield",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    460,
+    779,
+    476,
+    789
+   ],
+   "text": "to",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    480,
+    778,
+    500,
+    792
+   ],
+   "text": "by",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    503,
+    778,
+    558,
+    789
+   ],
+   "text": "Marisol",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    562,
+    778,
+    622,
+    789
+   ],
+   "text": "rollback",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    626,
+    778,
+    763,
+    793
+   ],
+   "text": "ghp_8fK2xQ7mLw",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    766,
+    778,
+    820,
+    789
+   ],
+   "text": "Raman",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    823,
+    781,
+    858,
+    792
+   ],
+   "text": "repo",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    862,
+    778,
+    917,
+    789
+   ],
+   "text": "Marisol",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    920,
+    778,
+    968,
+    792
+   ],
+   "text": "kpatel",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    972,
+    779,
+    1035,
+    789
+   ],
+   "text": "contract",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1039,
+    778,
+    1077,
+    792
+   ],
+   "text": "Vega",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1081,
+    778,
+    1120,
+    789
+   ],
+   "text": "4417",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1124,
+    778,
+    1176,
+    792
+   ],
+   "text": "payroll",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1179,
+    778,
+    1227,
+    792
+   ],
+   "text": "kpatel",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1231,
+    778,
+    1285,
+    789
+   ],
+   "text": "vendor",
+   "expect": "redact"
+  }
+ ],
+ "objects": [
+  {
+   "box": [
+    80,
+    320,
+    1320,
+    322
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    82,
+    568,
+    98,
+    584
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    82,
+    608,
+    98,
+    624
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    82,
+    648,
+    98,
+    664
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    82,
+    688,
+    98,
+    704
+   ],
+   "kind": "rect"
+  }
+ ]
+}
