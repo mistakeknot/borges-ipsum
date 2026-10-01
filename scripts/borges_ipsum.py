@@ -103,6 +103,66 @@ def ink_mask(gray, stroke, contrast, theme):
     return np.where(local < 128, light_ink > contrast, dark_ink > contrast)
 
 
+def find_runs(mask, rgb, gray, word_gap, max_height, H):
+    """Word-sized runs of ink: (x0, y0, x1, y1, ly0, ly1, fg, ink), plus the specks skipped."""
+    lines_lbl, _ = ndi.label(ndi.binary_dilation(mask, structure=np.ones((1, word_gap * 2 + 5))))
+    words_lbl, _ = ndi.label(ndi.binary_dilation(mask, structure=np.ones((1, word_gap))))
+    line_sl = ndi.find_objects(lines_lbl)
+    runs, specks = [], []
+    for ws in ndi.find_objects(words_lbl):
+        if ws is None:
+            continue
+        y0, y1, x0, x1 = ws[0].start, ws[0].stop, ws[1].start, ws[1].stop
+        h, w = y1 - y0, x1 - x0
+        m = mask[ws]
+        if not m.any():
+            continue
+        if (h < 9 and not (h >= 4 and w >= 40)) or w < 10 or m.sum() < 15:
+            if h <= max_height:
+                specks.append((x0, y0, x1, y1))  # commas, dots, hyphens: erase, don't redraw
+            continue
+        if h > max_height:
+            continue
+        if h < 9 and m.mean(axis=1).max() > 0.85:
+            continue  # a rule line, not a short line of text
+        cols = np.nonzero(m.any(axis=0))[0]
+        extent = cols[-1] - cols[0] + 1
+        if ndi.label(m)[1] <= 1:
+            # One blob is an icon, a spinner or a curve, unless it is joined-up
+            # text (an underlined link, a connected script), whose strokes cross
+            # many columns more than once where a curve crosses each column once.
+            crossings = (np.diff(m.astype(np.int8), axis=0) == 1).sum(axis=0) + m[0]
+            if extent < 1.6 * h or (crossings[cols] >= 2).mean() < 0.15:
+                continue
+        if y1 > H - 6:
+            continue
+        sub = lines_lbl[ws][m]
+        ls = line_sl[np.bincount(sub[sub > 0]).argmax() - 1]
+        ly0, ly1 = ls[0].start, ls[0].stop
+        if ly1 - ly0 > max_height:
+            ly0, ly1 = y0, y1
+        # The text colour is whatever in the box lies farthest from the box's
+        # typical colour. The mask can catch an outline or halo instead of the
+        # letters (white captions on a photo), so it is not used for colour.
+        pix = rgb[min(y0, ly0):max(y1, ly1), x0:x1].reshape(-1, 3).astype(float)
+        dist = np.abs(pix - np.median(pix, axis=0)).sum(axis=1)
+        fg = tuple(int(c) for c in pix[dist >= np.percentile(dist, 92)].mean(axis=0))
+        ink = m.sum() / max(1, m.any(axis=0).sum() * h)
+        runs.append((x0, y0, x1, y1, ly0, ly1, fg, ink))
+    return runs, specks
+
+
+def clean_mask(mask, max_height):
+    """Lift out panel borders, dividers and box outlines so text inside a box
+    does not fuse with the box into one tall shape."""
+    mask = mask & ~ndi.binary_opening(mask, structure=np.ones((1, 4 * max_height)))
+    return mask & ~ndi.binary_opening(mask, structure=np.ones((max(9, int(0.75 * max_height)), 1)))
+
+
+def overlaps(a, b, pad=0):
+    return a[0] < b[2] + pad and b[0] < a[2] + pad and a[1] < b[3] + pad and b[1] < a[3] + pad
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("src")
@@ -115,12 +175,13 @@ def main(argv=None):
                     help="text lighter than background (dark), darker (light), or decide locally")
     ap.add_argument("--font", default="sans",
                     help="mono, sans, serif, or a path to a .ttf/.otf (default: sans)")
-    ap.add_argument("--stroke", type=int, default=9,
-                    help="filter size; must exceed stroke width (default 9, raise for big bold text)")
-    ap.add_argument("--contrast", type=int, default=28, help="ink threshold in grey levels (default 28)")
-    ap.add_argument("--word-gap", type=int, default=13,
-                    help="px gap that still joins letters into one run (default 13)")
-    ap.add_argument("--max-height", type=int, default=60, help="tallest text run, px (default 60)")
+    ap.add_argument("--stroke", type=int,
+                    help="filter size; must exceed stroke width (default 9, scaled up for 2x screenshots)")
+    ap.add_argument("--contrast", type=int, default=20, help="ink threshold in grey levels (default 20)")
+    ap.add_argument("--word-gap", type=int,
+                    help="px gap that still joins letters into one run (default 13, scaled)")
+    ap.add_argument("--max-height", type=int,
+                    help="tallest body text run, px (default 60, scaled); larger headings get a second pass")
     ap.add_argument("--seed", type=int, default=1899, help="word choice seed (default: Borges's birth year)")
     ap.add_argument("--debug-mask", metavar="PNG", help="also write the detected ink mask")
     args = ap.parse_args(argv)
@@ -131,69 +192,103 @@ def main(argv=None):
     gray = rgb.mean(axis=2)
     H, W = gray.shape
 
-    mask = ink_mask(gray, args.stroke, args.contrast, args.theme)
+    allowed = np.ones((H, W), bool)
     if args.only:
-        allowed = np.zeros_like(mask)
+        allowed[:] = False
         for x0, y0, x1, y1 in args.only:
             allowed[max(0, y0):y1, max(0, x0):x1] = True
-        mask &= allowed
     for x0, y0, x1, y1 in args.keep:
-        mask[max(0, y0):y1, max(0, x0):x1] = False
-    # Panel borders and dividers are ink too; a text run that touches one would
-    # fuse with it into one tall shape and be skipped, so lift them out first.
-    mask &= ~ndi.binary_opening(mask, structure=np.ones((args.max_height, 1)))
+        allowed[max(0, y0):y1, max(0, x0):x1] = False
+
+    def detect(stroke, word_gap, max_height):
+        raw = ink_mask(gray, stroke, args.contrast, args.theme) & allowed
+        mask = clean_mask(raw, max_height)
+        return raw, mask, *find_runs(mask, rgb, gray, word_gap, max_height, H)
+
+    # Probe at 1x sizes; a 2x (retina) capture has taller lines, so scale up.
+    _, _, probe, _ = detect(args.stroke or 9, args.word_gap or 13, args.max_height or 60)
+    probe_body = np.median([r[5] - r[4] for r in probe]) if probe else 20
+    scale = max(1.0, probe_body / 24)
+    stroke = args.stroke or (int(9 * scale) | 1)
+    word_gap = args.word_gap or int(13 * scale)
+    max_height = args.max_height or int(60 * scale)
+    raw, mask, runs, specks = detect(stroke, word_gap, max_height)
+    body = np.median([r[5] - r[4] for r in runs]) if runs else 20
+
+    # Second pass for display headings whose strokes are too thick for the
+    # first filter. A heading is a wide line of thick ink; box outlines and QR
+    # codes are thin ink the first filter already saw, so they are refused.
+    _, hmask, heads, _ = detect(int(stroke * 2.5) | 1, int(word_gap * 2.5), max_height * 3)
+    for r in heads:
+        x0, y0, x1, y1 = r[:4]
+        if y1 - y0 < 1.5 * body or x1 - x0 < 2 * (y1 - y0):
+            continue
+        inside = [q for q in runs if overlaps(r, q)]
+        if any(not (q[0] >= x0 - 2 and q[2] <= x1 + 2 and q[1] >= y0 - 2 and q[3] <= y1 + 2) for q in inside):
+            continue  # it straddles body text, so it is not a heading on its own
+        bands = []
+        for q in sorted(inside, key=lambda q: q[1]):
+            if bands and q[1] < bands[-1]:
+                bands[-1] = max(bands[-1], q[3])
+            else:
+                bands.append(q[3])
+        if len(bands) > 1:
+            continue  # stacked body lines the wide filter bridged into one block
+        hm = hmask[y0:y1, x0:x1]
+        if hm.mean() > 0.6 or (raw[y0:y1, x0:x1] & hm).sum() > 0.6 * hm.sum():
+            continue  # a solid block, or thin ink the first pass already judged
+        runs = [q for q in runs if q not in inside]  # fragments of the heading the first pass saw
+        runs.append(r[:4] + (y0, y1) + r[6:])
+        mask[y0:y1, x0:x1] |= hm
+
     if args.debug_mask:
         Image.fromarray((mask * 255).astype(np.uint8)).save(args.debug_mask)
 
-    lines_lbl, _ = ndi.label(ndi.binary_dilation(mask, structure=np.ones((1, args.word_gap * 2 + 5))))
-    words_lbl, _ = ndi.label(ndi.binary_dilation(mask, structure=np.ones((1, args.word_gap))))
-    line_sl = ndi.find_objects(lines_lbl)
+    # Erase each run, filling from the rows just above and below it so
+    # gradients and photos carry through instead of showing a flat patch.
+    near = ndi.binary_dilation(mask, iterations=3)
 
-    jobs = []
-    for ws in ndi.find_objects(words_lbl):
-        if ws is None:
-            continue
-        y0, y1, x0, x1 = ws[0].start, ws[0].stop, ws[1].start, ws[1].stop
-        h, w = y1 - y0, x1 - x0
-        m = mask[ws]
-        if (h < 9 and not (h >= 4 and w >= 40)) or h > args.max_height or w < 10 or m.sum() < 15:
-            continue  # borders, separators, specks
-        if h < 9 and m.mean(axis=1).max() > 0.85:
-            continue  # a rule line, not a short line of text
-        cols = np.nonzero(m.any(axis=0))[0]
-        if (cols[-1] - cols[0] + 1 < 1.6 * h and ndi.label(m)[1] <= 1) or y1 > H - 6:
-            continue  # icons and spinners are one blob; a short word is several glyphs
-        sub = lines_lbl[ws][m]
-        ls = line_sl[np.bincount(sub[sub > 0]).argmax() - 1]
-        ly0, ly1 = ls[0].start, ls[0].stop
-        if ly1 - ly0 > args.max_height:
-            ly0, ly1 = y0, y1
-        pix = rgb[ws][m]
-        lum = pix.mean(axis=1)
-        fg = tuple(int(c) for c in pix[lum >= np.percentile(lum, 70)].mean(axis=0)) \
-            if gray[ws][~m].mean() < 128 else \
-            tuple(int(c) for c in pix[lum <= np.percentile(lum, 30)].mean(axis=0))
-        pad = 4
-        py0, py1, px0, px1 = max(0, y0 - pad), min(H, y1 + pad), max(0, x0 - pad), min(W, x1 + pad)
-        region = rgb[py0:py1, px0:px1]
-        rmask = ndi.binary_dilation(mask[py0:py1, px0:px1], iterations=2)
-        bgpix = region[~rmask] if (~rmask).any() else region.reshape(-1, 3)
-        bgc = tuple(int(c) for c in np.median(bgpix, axis=0))
-        ink = m.sum() / max(1, m.any(axis=0).sum() * h)
-        jobs.append((x0, y0, x1, y1, ly0, ly1, fg, bgc, ink))
+    def loose_punctuation(s):
+        """A speck beside a run on flat background; the edge of a dot or an
+        avatar sits on its own colour and is left alone."""
+        if not any(s[1] >= r[4] - 2 and s[3] <= r[5] + 2 and overlaps(s, r, 2 * word_gap) for r in runs):
+            return False
+        x0, y0, x1, y1 = max(0, s[0] - 3), max(0, s[1] - 3), s[2] + 3, s[3] + 3
+        around = rgb[y0:y1, x0:x1][~near[y0:y1, x0:x1]]
+        return around.size == 0 or around.std(axis=0).max() < 10
 
-    out = img.copy()
+    # a speck inside a run (a heading's stroke fragment) goes with the run; its
+    # own fill would sample the heading's ink and leave a dark bar behind
+    specks = [s for s in specks if loose_punctuation(s) and not any(overlaps(s, r) for r in runs)]
+    canvas = rgb.copy()
+    # erase the whole line height: a run's own box can miss ascenders and
+    # descenders when only part of each letter was detected
+    for x0, y0, x1, y1 in [(r[0], min(r[1], r[4]), r[2], max(r[3], r[5])) for r in runs] + specks:
+        bx0, by0, bx1, by1 = max(0, x0 - 2), max(0, y0 - 2), min(W, x1 + 2), min(H, y1 + 2)
+        ring = rgb[max(0, by0 - 4):min(H, by1 + 4), max(0, bx0 - 4):min(W, bx1 + 4)]
+        ring_ok = ~near[max(0, by0 - 4):min(H, by1 + 4), max(0, bx0 - 4):min(W, bx1 + 4)]
+        flat = np.median(ring[ring_ok] if ring_ok.any() else ring.reshape(-1, 3), axis=0)
+
+        def edge(y):
+            if not 0 <= y < H:
+                return np.tile(flat, (bx1 - bx0, 1))
+            row = rgb[y, bx0:bx1].astype(float)
+            row[near[y, bx0:bx1]] = flat
+            return ndi.uniform_filter1d(row, 7, axis=0)
+
+        top, bot = edge(by0 - 1), edge(by1)
+        t = np.linspace(0, 1, by1 - by0)[:, None, None]
+        canvas[by0:by1, bx0:bx1] = (1 - t) * top[None] + t * bot[None]
+
+    out = Image.fromarray(canvas.clip(0, 255).astype(np.uint8))
     draw = ImageDraw.Draw(out)
-    for x0, y0, x1, y1, *_, bgc, _ink in jobs:
-        draw.rectangle([x0 - 2, y0 - 2, x1 + 1, y1 + 1], fill=bgc)
-
-    if not jobs:
-        out.save(args.dst)
+    if not runs:
+        img.save(args.dst)
         print(f"0 text runs found; wrote an unchanged copy to {args.dst}", file=sys.stderr)
         return 0
 
-    typical_ink = np.median([j[-1] for j in jobs])
-    body = int(np.median([j[5] - j[4] for j in jobs]))
+    typical_ink = np.median([r[-1] for r in runs])
+    body = int(body)
     fonts = {}
 
     def font(size, bold):
@@ -216,7 +311,7 @@ def main(argv=None):
             words.append(w)
         return " ".join(words) or min(SMALL, key=len)
 
-    for x0, y0, x1, y1, ly0, ly1, fg, bgc, ink in jobs:
+    for x0, y0, x1, y1, ly0, ly1, fg, ink in runs:
         size = ly1 - ly0
         size = body if 0.85 * body <= size <= 1.2 * body else max(9, size)
         f = font(size, ink > 1.45 * typical_ink)
@@ -224,7 +319,7 @@ def main(argv=None):
         draw.text((x0, ly0 - top_off), fill(f, x1 - x0), font=f, fill=fg)
 
     out.save(args.dst)
-    print(f"{len(jobs)} text runs replaced -> {args.dst}")
+    print(f"{len(runs)} text runs replaced -> {args.dst}")
     return 0
 
 

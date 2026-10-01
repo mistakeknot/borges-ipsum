@@ -5,8 +5,10 @@
 
 A word counts as replaced when its patch in the output no longer correlates
 with the original (NCC < 0.5) and still carries ink, so blanking it out does
-not pass. A kept word must be unchanged (NCC > 0.95). A non-text object
-(icon, rule, button) must survive: mean absolute difference under 12.
+not pass. One leaked word fails the fixture. A kept word must be unchanged
+(NCC > 0.95). A non-text object (icon, avatar, QR code, rule, button) must
+survive: under 2% of its pixels may move by more than 40 grey levels, not
+counting text the fixture placed on top of it.
 """
 import argparse
 import json
@@ -16,7 +18,7 @@ import sys
 import numpy as np
 from PIL import Image
 
-THRESHOLDS = {"replaced": 0.95, "kept": 0.95, "objects": 0.90, "not_blank": 0.90}
+THRESHOLDS = {"replaced": 1.0, "kept": 0.95, "objects": 0.90, "not_blank": 0.90}
 
 
 def ncc(a, b):
@@ -51,8 +53,16 @@ def score(truth_path, out_path):
         else:
             leaks.append(w["text"])
     kept = sum(ncc(patch(a, w["box"]), patch(b, w["box"])) > 0.95 for w in keep)
-    obj_ok = sum(np.abs(patch(a, o["box"], 0) - patch(b, o["box"], 0)).mean() < 12
-                 for o in truth["objects"])
+    text_px = np.zeros(a.shape, bool)
+    for w in truth["words"]:
+        l, t, r, bt = w["box"]
+        text_px[max(0, t - 4):bt + 4, max(0, l - 4):r + 4] = True
+
+    def survives(o):
+        moved = np.abs(patch(a, o["box"], 0) - patch(b, o["box"], 0)) > 40
+        return (moved & ~patch(text_px, o["box"], 0)).mean() < 0.02
+
+    obj_ok = sum(survives(o) for o in truth["objects"])
     rate = lambda n, d: round(n / d, 3) if d else 1.0
     res = {
         "replaced": rate(replaced, len(red)),
