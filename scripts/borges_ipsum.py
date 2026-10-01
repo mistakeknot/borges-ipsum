@@ -211,8 +211,8 @@ def main(argv=None):
     for x0, y0, x1, y1 in args.keep:
         allowed[max(0, y0):y1, max(0, x0):x1] = False
 
-    def detect(stroke, word_gap, max_height):
-        raw = ink_mask(gray, stroke, args.contrast, args.theme) & allowed
+    def detect(stroke, word_gap, max_height, contrast=args.contrast):
+        raw = ink_mask(gray, stroke, contrast, args.theme) & allowed
         mask = clean_mask(raw, max_height)
         return raw, mask, *find_runs(mask, rgb, gray, word_gap, max_height, H)
 
@@ -248,6 +248,11 @@ def main(argv=None):
         hm = hmask[y0:y1, x0:x1]
         if hm.mean() > 0.6 or (raw[y0:y1, x0:x1] & hm).sum() > 0.6 * hm.sum():
             continue  # a solid block, or thin ink the first pass already judged
+        lbl, n = ndi.label(hm)
+        hh = y1 - y0
+        if n < 3 or any(hm[sl].mean() > 0.7 and min(sl[0].stop - sl[0].start, sl[1].stop - sl[1].start) > 0.6 * hh
+                        for sl in ndi.find_objects(lbl)):
+            continue  # an icon beside a filled button, not a row of letters
         runs = [q for q in runs if q not in inside]  # fragments of the heading the first pass saw
         runs.append(r[:4] + (y0, y1) + r[6:])
         mask[y0:y1, x0:x1] |= hm
@@ -349,6 +354,24 @@ def main(argv=None):
 
     out.save(args.dst)
     print(f"{len(runs)} text runs replaced -> {args.dst}")
+
+    # Self-check: look again with a looser filter (thicker strokes, fainter
+    # ink, taller lines) for anything text-like that was not replaced.
+    erased = np.zeros((H, W), bool)
+    for x0, y0, x1, y1 in [(r[0], min(r[1], r[4]), r[2], max(r[3], r[5])) for r in runs] + specks:
+        erased[max(0, y0 - 2):y1 + 2, max(0, x0 - 2):x1 + 2] = True
+    _, lmask, loose, _ = detect(int(stroke * 2) | 1, word_gap, max_height * 3, max(8, args.contrast // 2))
+    missed = [q for q in loose if (lmask[q[1]:q[3], q[0]:q[2]] & ~erased[q[1]:q[3], q[0]:q[2]]).sum()
+              > 0.3 * lmask[q[1]:q[3], q[0]:q[2]].sum()]
+    for x0, y0, x1, y1, *_ in missed:
+        h = y1 - y0
+        hint = (f"tall, try --max-height {h + 10} --stroke {int(h / 3) | 1}" if h > max_height
+                else f"faint, try --contrast {max(8, args.contrast // 2)}"
+                if (gray[y0:y1, x0:x1].max() - gray[y0:y1, x0:x1].min()) < 2 * args.contrast
+                else "bold or tightly set, try --stroke {}".format(int(stroke * 1.6) | 1))
+        print(f"  check {x0},{y0},{x1},{y1}: possible text left ({hint})")
+    if missed:
+        print(f"{len(missed)} region(s) may still hold text, or an icon or pattern; look at each")
     return 0
 
 
