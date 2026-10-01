@@ -1,0 +1,1263 @@
+{
+ "image": "chrome.png",
+ "task": "Keep generic app chrome such as the menu bar and folder names like Inbox and Sent. Replace anything that could identify a person, company or project.",
+ "size": [
+  1500,
+  860
+ ],
+ "words": [
+  {
+   "box": [
+    18,
+    15,
+    48,
+    29
+   ],
+   "text": "File",
+   "expect": "keep"
+  },
+  {
+   "box": [
+    53,
+    15,
+    89,
+    29
+   ],
+   "text": "Edit",
+   "expect": "keep"
+  },
+  {
+   "box": [
+    94,
+    15,
+    138,
+    29
+   ],
+   "text": "View",
+   "expect": "keep"
+  },
+  {
+   "box": [
+    142,
+    16,
+    168,
+    29
+   ],
+   "text": "Go",
+   "expect": "keep"
+  },
+  {
+   "box": [
+    173,
+    15,
+    215,
+    33
+   ],
+   "text": "Help",
+   "expect": "keep"
+  },
+  {
+   "box": [
+    28,
+    74,
+    80,
+    88
+   ],
+   "text": "Inbox",
+   "expect": "keep"
+  },
+  {
+   "box": [
+    28,
+    112,
+    86,
+    126
+   ],
+   "text": "Drafts",
+   "expect": "keep"
+  },
+  {
+   "box": [
+    28,
+    150,
+    71,
+    164
+   ],
+   "text": "Sent",
+   "expect": "keep"
+  },
+  {
+   "box": [
+    28,
+    188,
+    99,
+    202
+   ],
+   "text": "Archive",
+   "expect": "keep"
+  },
+  {
+   "box": [
+    28,
+    226,
+    82,
+    244
+   ],
+   "text": "Spam",
+   "expect": "keep"
+  },
+  {
+   "box": [
+    27,
+    264,
+    78,
+    278
+   ],
+   "text": "Trash",
+   "expect": "keep"
+  },
+  {
+   "box": [
+    28,
+    321,
+    83,
+    332
+   ],
+   "text": "Labels",
+   "expect": "keep"
+  },
+  {
+   "box": [
+    28,
+    357,
+    84,
+    375
+   ],
+   "text": "kpatel",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    89,
+    358,
+    179,
+    371
+   ],
+   "text": "OPS-7731",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    28,
+    397,
+    63,
+    407
+   ],
+   "text": "was",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    68,
+    393,
+    140,
+    407
+   ],
+   "text": "rollback",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    28,
+    429,
+    77,
+    443
+   ],
+   "text": "letter",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    82,
+    429,
+    168,
+    447
+   ],
+   "text": "approved",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    28,
+    465,
+    58,
+    479
+   ],
+   "text": "the",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    63,
+    466,
+    110,
+    479
+   ],
+   "text": "4417",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    290,
+    73,
+    360,
+    87
+   ],
+   "text": "Initech",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    366,
+    74,
+    388,
+    87
+   ],
+   "text": "to",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    560,
+    73,
+    723,
+    91
+   ],
+   "text": "ghp_8fK2xQ7mLw",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    728,
+    73,
+    778,
+    87
+   ],
+   "text": "letter",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    782,
+    77,
+    824,
+    91
+   ],
+   "text": "repo",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    829,
+    73,
+    860,
+    87
+   ],
+   "text": "the",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    864,
+    73,
+    926,
+    91
+   ],
+   "text": "payroll",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    931,
+    73,
+    973,
+    87
+   ],
+   "text": "auth",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    977,
+    73,
+    1028,
+    87
+   ],
+   "text": "ticket",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1033,
+    74,
+    1080,
+    87
+   ],
+   "text": "reset",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1084,
+    73,
+    1115,
+    87
+   ],
+   "text": "the",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    290,
+    125,
+    368,
+    143
+   ],
+   "text": "merged",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    374,
+    125,
+    485,
+    143
+   ],
+   "text": "deploy-bot",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    560,
+    125,
+    621,
+    139
+   ],
+   "text": "Initech",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    626,
+    125,
+    677,
+    139
+   ],
+   "text": "failed",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    682,
+    129,
+    718,
+    139
+   ],
+   "text": "was",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    723,
+    126,
+    787,
+    139
+   ],
+   "text": "Raman",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    792,
+    125,
+    857,
+    139
+   ],
+   "text": "vendor",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    860,
+    125,
+    910,
+    139
+   ],
+   "text": "letter",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    915,
+    125,
+    996,
+    143
+   ],
+   "text": "roadmap",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1001,
+    125,
+    1082,
+    139
+   ],
+   "text": "Whitfield",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1087,
+    125,
+    1287,
+    143
+   ],
+   "text": "northwind/ledger-core",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    290,
+    177,
+    386,
+    195
+   ],
+   "text": "approved",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    392,
+    177,
+    463,
+    191
+   ],
+   "text": "branch",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    560,
+    181,
+    601,
+    195
+   ],
+   "text": "repo",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    606,
+    177,
+    692,
+    195
+   ],
+   "text": "approved",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    697,
+    177,
+    739,
+    191
+   ],
+   "text": "auth",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    743,
+    181,
+    779,
+    191
+   ],
+   "text": "was",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    784,
+    177,
+    834,
+    191
+   ],
+   "text": "Hollis",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    839,
+    177,
+    885,
+    191
+   ],
+   "text": "main",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    889,
+    177,
+    1023,
+    193
+   ],
+   "text": "fix/refund-race",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1028,
+    178,
+    1047,
+    191
+   ],
+   "text": "to",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1051,
+    177,
+    1086,
+    191
+   ],
+   "text": "into",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    290,
+    229,
+    539,
+    247
+   ],
+   "text": "/home/jsmith/work/acme",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    560,
+    230,
+    645,
+    243
+   ],
+   "text": "customer",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    650,
+    229,
+    726,
+    247
+   ],
+   "text": "meeting",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    730,
+    230,
+    794,
+    243
+   ],
+   "text": "Raman",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    799,
+    233,
+    853,
+    247
+   ],
+   "text": "pager",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    857,
+    229,
+    930,
+    243
+   ],
+   "text": "#48213",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    935,
+    229,
+    966,
+    243
+   ],
+   "text": "the",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    971,
+    229,
+    1257,
+    247
+   ],
+   "text": "/home/jsmith/work/acme-billing",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1261,
+    230,
+    1351,
+    243
+   ],
+   "text": "OPS-7731",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    290,
+    281,
+    347,
+    295
+   ],
+   "text": "Hollis",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    352,
+    282,
+    423,
+    295
+   ],
+   "text": "Raman",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    559,
+    281,
+    617,
+    299
+   ],
+   "text": "Jordan",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    623,
+    281,
+    683,
+    295
+   ],
+   "text": "review",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    688,
+    282,
+    764,
+    295
+   ],
+   "text": "contract",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    768,
+    281,
+    819,
+    295
+   ],
+   "text": "failed",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    824,
+    282,
+    910,
+    295
+   ],
+   "text": "customer",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    914,
+    281,
+    976,
+    295
+   ],
+   "text": "Initech",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    981,
+    281,
+    1037,
+    299
+   ],
+   "text": "salary",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1041,
+    282,
+    1088,
+    295
+   ],
+   "text": "9921",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1093,
+    281,
+    1155,
+    299
+   ],
+   "text": "payroll",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    290,
+    334,
+    378,
+    347
+   ],
+   "text": "runner-7",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    384,
+    333,
+    455,
+    351
+   ],
+   "text": "payroll",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    560,
+    333,
+    844,
+    351
+   ],
+   "text": "priya.raman@northwind-labs.io",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    849,
+    333,
+    983,
+    349
+   ],
+   "text": "fix/refund-race",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    987,
+    334,
+    1034,
+    347
+   ],
+   "text": "9921",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1039,
+    333,
+    1085,
+    347
+   ],
+   "text": "main",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1089,
+    337,
+    1112,
+    347
+   ],
+   "text": "on",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1117,
+    334,
+    1164,
+    347
+   ],
+   "text": "4417",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1169,
+    333,
+    1235,
+    351
+   ],
+   "text": "expires",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1240,
+    334,
+    1264,
+    347
+   ],
+   "text": "PR",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1269,
+    333,
+    1300,
+    347
+   ],
+   "text": "the",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    290,
+    385,
+    324,
+    399
+   ],
+   "text": "the",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    329,
+    385,
+    374,
+    399
+   ],
+   "text": "with",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    560,
+    385,
+    844,
+    403
+   ],
+   "text": "priya.raman@northwind-labs.io",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    849,
+    386,
+    901,
+    399
+   ],
+   "text": "Grant",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    905,
+    385,
+    962,
+    403
+   ],
+   "text": "kpatel",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    967,
+    385,
+    1023,
+    403
+   ],
+   "text": "salary",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1027,
+    385,
+    1092,
+    399
+   ],
+   "text": "vendor",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1096,
+    385,
+    1158,
+    399
+   ],
+   "text": "Okafor",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1162,
+    385,
+    1243,
+    399
+   ],
+   "text": "Whitfield",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1248,
+    386,
+    1285,
+    399
+   ],
+   "text": "SSN",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1290,
+    389,
+    1309,
+    399
+   ],
+   "text": "ro",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    290,
+    437,
+    440,
+    453
+   ],
+   "text": "fix/refund-race",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    446,
+    437,
+    517,
+    451
+   ],
+   "text": "Thursd",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    560,
+    437,
+    610,
+    451
+   ],
+   "text": "ticket",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    615,
+    437,
+    638,
+    455
+   ],
+   "text": "by",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    643,
+    437,
+    693,
+    451
+   ],
+   "text": "Hollis",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    698,
+    437,
+    784,
+    455
+   ],
+   "text": "approved",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    788,
+    437,
+    852,
+    451
+   ],
+   "text": "branch",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    857,
+    437,
+    919,
+    455
+   ],
+   "text": "payroll",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    923,
+    438,
+    970,
+    451
+   ],
+   "text": "9921",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    975,
+    437,
+    1043,
+    455
+   ],
+   "text": "staging",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1047,
+    438,
+    1095,
+    451
+   ],
+   "text": "Dana",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    290,
+    489,
+    358,
+    503
+   ],
+   "text": "on-call",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    364,
+    489,
+    434,
+    503
+   ],
+   "text": "dollars",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    560,
+    490,
+    645,
+    503
+   ],
+   "text": "customer",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    650,
+    489,
+    681,
+    503
+   ],
+   "text": "the",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    685,
+    489,
+    729,
+    503
+   ],
+   "text": "offer",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    733,
+    489,
+    798,
+    503
+   ],
+   "text": "vendor",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    802,
+    489,
+    841,
+    503
+   ],
+   "text": "with",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    845,
+    489,
+    931,
+    507
+   ],
+   "text": "approved",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    936,
+    489,
+    978,
+    503
+   ],
+   "text": "auth",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    983,
+    489,
+    1014,
+    503
+   ],
+   "text": "the",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1018,
+    489,
+    1068,
+    503
+   ],
+   "text": "letter",
+   "expect": "redact"
+  }
+ ],
+ "objects": [
+  {
+   "box": [
+    290,
+    104,
+    1470,
+    105
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    290,
+    156,
+    1470,
+    157
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    290,
+    208,
+    1470,
+    209
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    290,
+    260,
+    1470,
+    261
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    290,
+    312,
+    1470,
+    313
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    290,
+    364,
+    1470,
+    365
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    290,
+    416,
+    1470,
+    417
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    290,
+    468,
+    1470,
+    469
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    290,
+    520,
+    1470,
+    521
+   ],
+   "kind": "rect"
+  }
+ ]
+}

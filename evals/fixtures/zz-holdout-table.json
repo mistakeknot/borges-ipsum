@@ -1,0 +1,1019 @@
+{
+ "image": "zz-holdout-table.png",
+ "task": "Anonymize this spreadsheet with Borges ipsum. The column headers are generic and can stay.",
+ "size": [
+  1300,
+  760
+ ],
+ "words": [
+  {
+   "box": [
+    50,
+    51,
+    93,
+    63
+   ],
+   "text": "Name",
+   "expect": "keep"
+  },
+  {
+   "box": [
+    310,
+    51,
+    350,
+    63
+   ],
+   "text": "Email",
+   "expect": "keep"
+  },
+  {
+   "box": [
+    570,
+    51,
+    609,
+    63
+   ],
+   "text": "Team",
+   "expect": "keep"
+  },
+  {
+   "box": [
+    830,
+    51,
+    875,
+    66
+   ],
+   "text": "Salary",
+   "expect": "keep"
+  },
+  {
+   "box": [
+    1070,
+    51,
+    1112,
+    63
+   ],
+   "text": "Notes",
+   "expect": "keep"
+  },
+  {
+   "box": [
+    50,
+    95,
+    71,
+    107
+   ],
+   "text": "the",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    310,
+    95,
+    360,
+    107
+   ],
+   "text": "invoice",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    570,
+    96,
+    604,
+    107
+   ],
+   "text": "9921",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    830,
+    96,
+    876,
+    109
+   ],
+   "text": "74,110",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1070,
+    96,
+    1129,
+    107
+   ],
+   "text": "runner-7",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    50,
+    138,
+    97,
+    151
+   ],
+   "text": "48,000",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    310,
+    137,
+    384,
+    153
+   ],
+   "text": "deploy-bot",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    570,
+    141,
+    596,
+    149
+   ],
+   "text": "was",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    830,
+    138,
+    877,
+    151
+   ],
+   "text": "66,539",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1070,
+    137,
+    1133,
+    149
+   ],
+   "text": "escalated",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    50,
+    179,
+    96,
+    191
+   ],
+   "text": "dollars",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    310,
+    179,
+    346,
+    195
+   ],
+   "text": "Priya",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    570,
+    181,
+    625,
+    191
+   ],
+   "text": "contract",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    830,
+    180,
+    877,
+    193
+   ],
+   "text": "81,978",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1070,
+    179,
+    1105,
+    191
+   ],
+   "text": "letter",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    50,
+    221,
+    98,
+    237
+   ],
+   "text": "payroll",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    310,
+    221,
+    343,
+    233
+   ],
+   "text": "offer",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    570,
+    221,
+    604,
+    233
+   ],
+   "text": "main",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    830,
+    222,
+    877,
+    235
+   ],
+   "text": "96,292",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1070,
+    221,
+    1222,
+    237
+   ],
+   "text": "northwind/ledger-core",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    50,
+    264,
+    81,
+    275
+   ],
+   "text": "SSN",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    310,
+    263,
+    361,
+    279
+   ],
+   "text": "merged",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    570,
+    264,
+    629,
+    275
+   ],
+   "text": "runner-7",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    830,
+    264,
+    877,
+    277
+   ],
+   "text": "80,209",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1070,
+    265,
+    1133,
+    275
+   ],
+   "text": "customer",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    50,
+    306,
+    84,
+    317
+   ],
+   "text": "9921",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    310,
+    305,
+    348,
+    317
+   ],
+   "text": "ticket",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    570,
+    306,
+    605,
+    317
+   ],
+   "text": "4417",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    830,
+    306,
+    877,
+    319
+   ],
+   "text": "97,040",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1070,
+    306,
+    1104,
+    317
+   ],
+   "text": "9921",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    50,
+    347,
+    97,
+    363
+   ],
+   "text": "ending",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    310,
+    347,
+    366,
+    359
+   ],
+   "text": "rollback",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    570,
+    347,
+    588,
+    363
+   ],
+   "text": "by",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    830,
+    348,
+    886,
+    361
+   ],
+   "text": "149,864",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1070,
+    347,
+    1108,
+    359
+   ],
+   "text": "token",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    50,
+    389,
+    98,
+    401
+   ],
+   "text": "Okafor",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    310,
+    393,
+    328,
+    401
+   ],
+   "text": "on",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    570,
+    389,
+    634,
+    405
+   ],
+   "text": "approved",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    830,
+    390,
+    885,
+    403
+   ],
+   "text": "118,368",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1070,
+    390,
+    1106,
+    401
+   ],
+   "text": "Dana",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    50,
+    431,
+    106,
+    443
+   ],
+   "text": "rollback",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    310,
+    431,
+    343,
+    447
+   ],
+   "text": "legal",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    570,
+    431,
+    743,
+    447
+   ],
+   "text": "priya.raman@northwind-",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    830,
+    432,
+    886,
+    445
+   ],
+   "text": "175,354",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1070,
+    431,
+    1096,
+    443
+   ],
+   "text": "into",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    50,
+    473,
+    109,
+    489
+   ],
+   "text": "roadmap",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    310,
+    477,
+    336,
+    485
+   ],
+   "text": "was",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    570,
+    474,
+    629,
+    485
+   ],
+   "text": "runner-7",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    830,
+    474,
+    885,
+    487
+   ],
+   "text": "159,075",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1070,
+    473,
+    1136,
+    485
+   ],
+   "text": "Whitfield",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    50,
+    515,
+    117,
+    531
+   ],
+   "text": "migration",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    310,
+    515,
+    343,
+    531
+   ],
+   "text": "legal",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    570,
+    515,
+    603,
+    531
+   ],
+   "text": "legal",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    830,
+    516,
+    885,
+    529
+   ],
+   "text": "186,452",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1070,
+    515,
+    1104,
+    527
+   ],
+   "text": "main",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    50,
+    558,
+    85,
+    569
+   ],
+   "text": "1287",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    310,
+    557,
+    348,
+    569
+   ],
+   "text": "ticket",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    570,
+    557,
+    644,
+    573
+   ],
+   "text": "deploy-bot",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    830,
+    558,
+    885,
+    571
+   ],
+   "text": "145,930",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1070,
+    557,
+    1120,
+    573
+   ],
+   "text": "staging",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    50,
+    599,
+    96,
+    611
+   ],
+   "text": "Jordan",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    310,
+    599,
+    352,
+    611
+   ],
+   "text": "Hollis",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    570,
+    603,
+    596,
+    611
+   ],
+   "text": "was",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    830,
+    600,
+    877,
+    613
+   ],
+   "text": "98,137",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1070,
+    599,
+    1108,
+    611
+   ],
+   "text": "ticket",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    50,
+    641,
+    223,
+    657
+   ],
+   "text": "priya.raman@northwind-",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    310,
+    642,
+    331,
+    655
+   ],
+   "text": "Q3",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    570,
+    641,
+    617,
+    653
+   ],
+   "text": "on-call",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    830,
+    642,
+    877,
+    655
+   ],
+   "text": "50,331",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1070,
+    641,
+    1111,
+    657
+   ],
+   "text": "salary",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    50,
+    683,
+    109,
+    699
+   ],
+   "text": "roadmap",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    310,
+    683,
+    455,
+    699
+   ],
+   "text": "api.northwind-labs.io",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    570,
+    683,
+    603,
+    695
+   ],
+   "text": "offer",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    830,
+    684,
+    877,
+    697
+   ],
+   "text": "82,967",
+   "expect": "redact"
+  },
+  {
+   "box": [
+    1070,
+    683,
+    1117,
+    695
+   ],
+   "text": "branch",
+   "expect": "redact"
+  }
+ ],
+ "objects": [
+  {
+   "box": [
+    40,
+    40,
+    41,
+    712
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    300,
+    40,
+    301,
+    712
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    560,
+    40,
+    561,
+    712
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    820,
+    40,
+    821,
+    712
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    1060,
+    40,
+    1061,
+    712
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    1260,
+    40,
+    1261,
+    712
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    40,
+    40,
+    1261,
+    41
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    40,
+    82,
+    1261,
+    83
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    40,
+    124,
+    1261,
+    125
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    40,
+    166,
+    1261,
+    167
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    40,
+    208,
+    1261,
+    209
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    40,
+    250,
+    1261,
+    251
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    40,
+    292,
+    1261,
+    293
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    40,
+    334,
+    1261,
+    335
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    40,
+    376,
+    1261,
+    377
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    40,
+    418,
+    1261,
+    419
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    40,
+    460,
+    1261,
+    461
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    40,
+    502,
+    1261,
+    503
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    40,
+    544,
+    1261,
+    545
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    40,
+    586,
+    1261,
+    587
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    40,
+    628,
+    1261,
+    629
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    40,
+    670,
+    1261,
+    671
+   ],
+   "kind": "rect"
+  },
+  {
+   "box": [
+    40,
+    712,
+    1261,
+    713
+   ],
+   "kind": "rect"
+  }
+ ]
+}

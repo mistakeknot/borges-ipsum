@@ -21,6 +21,12 @@ FONTS = {
     "sans": "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
     "sans-bold": "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
     "serif": "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf",
+    # held-out fixtures use other families, so a pass is not fitted to DejaVu
+    "lato": "/usr/share/fonts/truetype/lato/Lato-Regular.ttf",
+    "lato-bold": "/usr/share/fonts/truetype/lato/Lato-Bold.ttf",
+    "lib-mono": "/usr/share/fonts/truetype/liberation/LiberationMono-Regular.ttf",
+    "lib-serif": "/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf",
+    "lib-sans": "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
 }
 
 PII = """Priya Raman priya.raman@northwind-labs.io deploy-bot ghp_8fK2xQ7mLw prod-db-03
@@ -148,7 +154,162 @@ def colorful():
     c.save("Swap every bit of text for Borges ipsum.")
 
 
+def retina():
+    # A 2x capture: every size doubles, and the heading outgrows --max-height 60.
+    c = Canvas("retina", 2880, 1600, (24, 26, 30))
+    c.d.rectangle([0, 0, 2880, 56], fill=(44, 46, 52))
+    c.text(36, 12, "Mail Edit View Mailbox Message", "sans-bold", 28, (230, 230, 230), "keep")
+    c.text(120, 140, "Re: Initech contract", "sans-bold", 76, (245, 245, 245))
+    c.obj("ellipse", (120, 290, 200, 370), fill=(200, 90, 120))
+    c.text(230, 305, "Marisol Vega to Dana Whitfield", "sans", 34, (200, 200, 205))
+    y = c.para(120, 430, 2600, 8, "sans", 34, (225, 225, 225))
+    c.para(120, y + 40, 2600, 2, "mono", 30, (140, 200, 255))
+    c.save("Replace all private text with Borges ipsum. Keep the macOS menu bar at the top.")
+
+
+def faint_bold():
+    # Placeholder-grey text below the default contrast and a heavy display heading.
+    c = Canvas("faint-bold", 1400, 900, (252, 252, 250))
+    c.text(70, 40, "Hollis Grant payroll", "sans-bold", 62, (15, 15, 15))
+    y = c.para(70, 150, 1260, 4, "sans", 21, (45, 45, 45))
+    c.obj("rounded", (70, y + 20, 900, y + 76), radius=8, outline=(205, 205, 205), width=2)
+    c.text(90, y + 34, "priya.raman@northwind-labs.io", "sans", 20, (226, 226, 226))
+    c.text(70, y + 110, "Last edited by Jordan Okafor", "sans", 16, (222, 222, 220))
+    c.para(70, y + 160, 1260, 3, "serif", 22, (40, 40, 40))
+    c.save("Anonymize every piece of text in this screenshot with Borges ipsum, "
+           "including faint placeholder text.")
+
+
+def media():
+    # Text over a gradient and a photo, next to an avatar and a QR code that must survive.
+    rng = random.Random("media")
+    c = Canvas("media", 1400, 900, (245, 245, 245))
+    for x in range(1400):  # gradient banner
+        t = x / 1400
+        c.d.line([(x, 0), (x, 120)], fill=(int(40 + 160 * t), 60, int(160 - 100 * t)))
+    c.text(40, 36, "Globex quarterly offsite", "sans-bold", 40, (255, 255, 255))
+    # "photo": soft blobs with a caption on top
+    from PIL import ImageFilter
+    photo = Image.new("RGB", (560, 380))
+    pd = ImageDraw.Draw(photo)
+    for _ in range(40):
+        x, y, r = rng.randrange(560), rng.randrange(380), rng.randrange(30, 120)
+        pd.ellipse([x - r, y - r, x + r, y + r], fill=tuple(rng.randrange(60, 200) for _ in range(3)))
+    c.img.paste(photo.filter(ImageFilter.GaussianBlur(18)), (40, 160))
+    c.objects.append({"box": [40, 160, 600, 480], "kind": "photo", "text_inside": True})
+    c.text(60, 430, "Dana Whitfield, Lisbon", "sans-bold", 26, (255, 255, 255))
+    # avatar
+    face = Image.new("RGB", (120, 120), (210, 170, 140))
+    fd = ImageDraw.Draw(face)
+    fd.ellipse([30, 30, 50, 50], fill=(40, 30, 30))
+    fd.ellipse([70, 30, 90, 50], fill=(40, 30, 30))
+    fd.arc([30, 50, 90, 95], 20, 160, fill=(120, 40, 40), width=5)
+    c.img.paste(face, (660, 170))
+    c.objects.append({"box": [660, 170, 780, 290], "kind": "avatar"})
+    c.text(800, 200, "Hollis Grant", "sans-bold", 26, (30, 30, 30))
+    c.text(800, 240, "hollis@globex.example", "sans", 20, (90, 90, 90))
+    # QR-like code: 6 px modules, finer than the stroke filter
+    q0x, q0y, mod = 1100, 170, 6
+    c.d.rectangle([q0x - 12, q0y - 12, q0x + 25 * mod + 12, q0y + 25 * mod + 12], fill=(255, 255, 255))
+    for i in range(25):
+        for j in range(25):
+            corner = (i < 7 and j < 7) or (i < 7 and j > 17) or (i > 17 and j < 7)
+            on = (corner and (i % 6 == 0 or j % 6 == 0 or (i % 6 in (2, 3, 4) and j % 6 in (2, 3, 4)))) \
+                if corner else rng.random() < 0.5
+            if on:
+                c.d.rectangle([q0x + j * mod, q0y + i * mod, q0x + j * mod + mod - 1, q0y + i * mod + mod - 1],
+                              fill=(0, 0, 0))
+    c.objects.append({"box": [q0x, q0y, q0x + 25 * mod, q0y + 25 * mod], "kind": "qr"})
+    c.para(660, 520, 700, 6, "sans", 21, (40, 40, 40))
+    c.save("Swap every bit of text for Borges ipsum before I post this. "
+           "Tell me about anything you could not anonymize.")
+
+
+def chrome():
+    # The keep is a judgement: generic labels stay, anything identifying goes.
+    c = Canvas("chrome", 1500, 860, (250, 250, 252))
+    c.d.rectangle([0, 0, 1500, 44], fill=(232, 232, 236))
+    c.text(18, 12, "File Edit View Go Help", "sans", 18, (30, 30, 30), "keep")
+    c.d.rectangle([0, 44, 260, 860], fill=(240, 240, 244))
+    y = 70
+    for label in ("Inbox", "Drafts", "Sent", "Archive", "Spam", "Trash"):
+        c.text(28, y, label, "sans", 19, (40, 40, 40), "keep")
+        y += 38
+    c.text(28, y + 20, "Labels", "sans-bold", 15, (110, 110, 110), "keep")
+    y += 56
+    for _ in range(4):
+        c.text(28, y, " ".join(c.rng.sample(PII, 2))[:20], "sans", 18, (40, 40, 40))
+        y += 36
+    y = 70
+    for _ in range(9):
+        c.text(290, y, " ".join(c.rng.sample(PII, 2))[:22], "sans-bold", 18, (20, 20, 20))
+        c.text(560, y, " ".join(c.rng.sample(PII, 9))[:80], "sans", 18, (90, 90, 90))
+        c.obj("rect", (290, y + 34, 1470, y + 35), fill=(225, 225, 230))
+        y += 52
+    c.save("Keep generic app chrome such as the menu bar and folder names like Inbox "
+           "and Sent. Replace anything that could identify a person, company or project.")
+
+
+# Held out: never used while tuning the script or the skill. The eval glob
+# [!z]* skips them; run them once per candidate to check it generalises.
+
+def zz_holdout_terminal():
+    # Small, tightly set terminal text with a coloured prompt and a status bar.
+    c = Canvas("zz-holdout-terminal", 1200, 700, (12, 14, 12))
+    y = 16
+    for _ in range(22):
+        x = c.text(14, y, "kpatel@runner-7:~$", "lib-mono", 13, (120, 220, 120))
+        line = " ".join(c.rng.sample(PII, 6))
+        c.text(x + 8, y, line, "lib-mono", 13, (200, 200, 200))
+        y += 26
+    c.d.rectangle([0, 670, 1200, 700], fill=(40, 110, 60))
+    c.text(10, 676, "[0] ledger-core 2:zsh", "lib-mono", 13, (230, 255, 230))
+    c.save("Borges-ipsum this terminal screenshot before I paste it in a public issue.")
+
+
+def zz_holdout_chat():
+    # A light team-chat layout: coloured names, timestamps, avatars and reaction pills.
+    c = Canvas("zz-holdout-chat", 1300, 860, (255, 255, 255))
+    c.d.rectangle([0, 0, 240, 860], fill=(63, 14, 64))
+    c.text(20, 20, "Globex", "lato-bold", 22, (255, 255, 255))
+    y = 80
+    for _ in range(10):
+        c.text(28, y, "# " + c.rng.choice(PII)[:16], "lato", 17, (205, 190, 205))
+        y += 34
+    y = 40
+    for i in range(6):
+        c.obj("rounded", (270, y, 310, y + 40), radius=6, fill=[(220, 120, 60), (60, 140, 200), (90, 170, 90)][i % 3])
+        x = c.text(325, y - 2, " ".join(c.rng.sample(PII, 2)), "lato-bold", 17, (29, 28, 29))
+        c.text(x + 6, y + 1, "10:4%d AM" % i, "lato", 13, (120, 120, 120))
+        y = c.para(325, y + 24, 920, 2, "lato", 17, (29, 28, 29))
+        c.obj("rounded", (325, y, 375, y + 24), radius=12, outline=(29, 155, 209), width=1, fill=(232, 245, 250))
+        y += 44
+    c.save("Replace all the text in this chat screenshot with Borges ipsum.")
+
+
+def zz_holdout_table():
+    # A spreadsheet: every cell sits inside grid lines that must survive.
+    c = Canvas("zz-holdout-table", 1300, 760, (255, 255, 255))
+    cols = [40, 300, 560, 820, 1060, 1260]
+    for i, h in enumerate(("Name", "Email", "Team", "Salary", "Notes")):
+        c.text(cols[i] + 10, 48, h, "lib-sans", 16, (60, 60, 60), "keep")
+    for r in range(15):
+        y = 80 + r * 42
+        for i in range(5):
+            s = c.rng.choice(PII) if i != 3 else "%d,%03d" % (c.rng.randrange(40, 190), c.rng.randrange(1000))
+            c.text(cols[i] + 10, y + 11, s[:22], "lib-serif", 17, (20, 20, 20))
+    for x in cols:  # PIL boxes are inclusive: these lines are 2 px, the scored box 1 px
+        c.obj("rect", (x, 40, x + 1, 712), fill=(200, 200, 200))
+    for r in range(17):
+        y = 40 if r == 0 else 40 + r * 42
+        c.obj("rect", (40, y, 1261, y + 1), fill=(200, 200, 200))
+    c.save("Anonymize this spreadsheet with Borges ipsum. The column headers are generic and can stay.")
+
+
+BUILDS = [dark_chat, light_doc, mixed_panes, colorful, retina, faint_bold, media, chrome,
+          zz_holdout_terminal, zz_holdout_chat, zz_holdout_table]
+
 if __name__ == "__main__":
-    for build in (dark_chat, light_doc, mixed_panes, colorful):
+    for build in BUILDS:
         build()
     print("fixtures written to", OUT)
